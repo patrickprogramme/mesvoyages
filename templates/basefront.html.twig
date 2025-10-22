@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block title %}{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block top %}
+    <div class="container">
+        <!-- titre -->
+        <div class="text-center">
+            <h1>Mes voyages</h1>
+            <p>Je vous présente les villes que j'ai visitées lors de mes voyages.</p>
+        </div>
+        <!-- menu -->
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('voyages') }}">Voyages</a>
+          </li>
+        </ul>
+    </div>
+{% endblock %}
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+
