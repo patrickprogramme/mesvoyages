@@ -68,6 +68,10 @@ class Visite
     {
         return $this->datecreation;
     }
+    
+    public function getDatecreationString(): string {
+    return $this->datecreation?->format('d/m/Y') ?? "";
+}
 
     public function setDatecreation(?\DateTime $datecreation): static
     {
@@ -79,6 +83,16 @@ class Visite
     public function getNote(): ?int
     {
         return $this->note;
+    }
+    
+    public function getNoteSurVingt(): string 
+    {
+        return $this->note !== null ? $this->note . "/20" : "";
+    }
+    
+    public function noteColor(): string
+    {
+        return $this->note < 10 ? "text-danger" : "text-success";
     }
 
     public function setNote(?int $note): static
