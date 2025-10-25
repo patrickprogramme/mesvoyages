@@ -7,14 +7,26 @@
         <thead>
             <tr>
                 <th scope="col">
-                    Ville
-                    <a href="{{ path('voyages.sort', {champ:'ville', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
-                    <a href="{{ path('voyages.sort', {champ:'ville', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                    <div class="d-flex align-items-center flex-wrap gap-2">
+                        <span>Ville</span>
+                        <a href="{{ path('voyages.sort', {champ:'ville', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
+                        <a href="{{ path('voyages.sort', {champ:'ville', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                        <form class="d-flex" method="POST" action="{{ path('voyages.findallequal', {champ:'ville'}) }}">
+                            <input type="text" class="form-control form-control-sm me-2" name="recherche" placeholder="Rechercher une ville">
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
                 </th>
                 <th scope="col">
-                    Pays
-                    <a href="{{ path('voyages.sort', {champ:'pays', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
-                    <a href="{{ path('voyages.sort', {champ:'pays', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                    <div class="d-flex align-items-center flex-wrap gap-2">
+                        <span>Pays</span>
+                        <a href="{{ path('voyages.sort', {champ:'pays', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
+                        <a href="{{ path('voyages.sort', {champ:'pays', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                        <form class="d-flex" method="POST" action="{{ path('voyages.findallequal', {champ:'pays'}) }}">
+                            <input type="text" class="form-control form-control-sm me-2" name="recherche" placeholder="Rechercher un pays">
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
                 </th>
                 <th scope="col">
                     Note
