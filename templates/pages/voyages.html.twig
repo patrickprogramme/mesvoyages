@@ -6,10 +6,26 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th scope="col">Ville</th>
-                <th scope="col">Pays</th>
-                <th scope="col">Note</th>
-                <th scope="col">Date</th>
+                <th scope="col">
+                    Ville
+                    <a href="{{ path('voyages.sort', {champ:'ville', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
+                    <a href="{{ path('voyages.sort', {champ:'ville', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                </th>
+                <th scope="col">
+                    Pays
+                    <a href="{{ path('voyages.sort', {champ:'pays', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
+                    <a href="{{ path('voyages.sort', {champ:'pays', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                </th>
+                <th scope="col">
+                    Note
+                    <a href="{{ path('voyages.sort', {champ:'note', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
+                    <a href="{{ path('voyages.sort', {champ:'note', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                </th>
+                <th scope="col">
+                    Date
+                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre: "ASC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▲</a>
+                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
+                </th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
