@@ -47,11 +47,19 @@ class VoyagesController extends AbstractController {
     
     #[Route('/voyages/recherche/{champ}', name: 'voyages.findallequal')]
     public function findAllEqual($champ, Request $request) : Response {
-        // Request est un injection de dépendance, correspondant à la requête HTTP en cours (ici POST)
+        // Request est un injection de dépendance, correspondant à la requête HTTP en cours
         $valeur = $request->get("recherche"); // récupération la valeur du champ "recherche"
         $visites = $this->repository->findByEqualValue($champ, $valeur);
         return $this->render("pages/voyages.html.twig", [
             'visites' => $visites
+        ]);
+    }
+    
+    #[Route('/voyages/voyage/{id}', name: 'voyages.showone')]
+    public function showOne($id) : Response {
+        $visite = $this->repository->find($id);
+        return $this->render("pages/voyage.html.twig", [
+            'visite' => $visite
         ]);
     }
 }

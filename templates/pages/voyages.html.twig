@@ -44,7 +44,7 @@
             {% for visite in visites %}
                 <tr>
                     <td>
-                        <a href="#">{{ visite.ville }}</a>
+                        <a href="{{ path('voyages.showone', {id:visite.id}) }}">{{ visite.ville }}</a>
                     </td>
                     <td>{{ visite.pays }}</td>
                     <td class="{{ visite.noteColor }}">
