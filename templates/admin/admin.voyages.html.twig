@@ -24,7 +24,7 @@
                         {{ visite.datecreationstring ?: '-' }}
                     </td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-outline-secondary">✏️</a>
+                        <a href="{{ path('admin.voyage.edit', {id: visite.id}) }}" class="btn btn-sm btn-outline-secondary">✏️</a>
                         <a href="{{ path('admin.voyage.suppr', {id: visite.id}) }}" 
                            class="btn btn-sm btn-outline-danger"
                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ visite.ville }} ?')">🗑
