@@ -1,0 +1,35 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+<form class="d-flex" method="POST" action="{{ path('admin.environnement.ajout') }}">
+    <input type="text" class="form-control form-control-sm w-25 me-2" name="nom" placeholder="nom d'un environnement">
+    <button type="submit" class="btn btn-primary btn-sm" title="Ajouter un environnement">
+        <i class="fas fa-plus"></i>
+    </button>
+</form>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for environnement in environnements %}
+                <tr>
+                    <td>
+                        {{ environnement.nom }}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin.environnement.suppr', {id: environnement.id}) }}" 
+                           class="btn btn-sm btn-outline-danger"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ environnement.nom }} ?')">Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

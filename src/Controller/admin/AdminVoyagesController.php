@@ -21,7 +21,7 @@ class AdminVoyagesController extends AbstractController {
      * 
      * @var VisiteRepository
      */
-    private $repository;
+    private VisiteRepository $repository;
        
     /**
      * 
