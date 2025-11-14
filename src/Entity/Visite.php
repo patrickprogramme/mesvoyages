@@ -43,6 +43,15 @@ class Visite
     private ?int $tempmax = null;
 
     #[Vich\UploadableField(mapping: 'visites', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Assert\Image(
+    maxSize: '2M',
+    maxSizeMessage: 'Cette image est trop lourde (2 Mo max).',
+    mimeTypes: ['image/jpeg', 'image/png'],
+    mimeTypesMessage: 'Seules les images JPEG ou PNG sont acceptées.',
+    uploadIniSizeErrorMessage: 'Cette image est trop lourde (2 Mo max).',
+    uploadFormSizeErrorMessage: 'Le fichier dépasse la limite du formulaire.',
+    uploadErrorMessage: 'Une erreur est survenue pendant l’upload.'
+    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
@@ -221,23 +230,5 @@ class Visite
 
     public function setImageSize(?int $imageSize): void {
         $this->imageSize = $imageSize;
-    }
-    #[Assert\Callback]
-    public function validate(ExecutionContextInterface $context){
-        $file = $this->getImageFile();
-        if($file != null && $file != ""){
-            $poids = @filesize($file);
-            if($poids != false && $poids > 1536 * 1024){
-                $context->buildViolation("Cette image est trop lourde (1,5Mo max)")
-                        ->atPath('imageFile')
-                        ->addViolation();
-            }
-            $infosImage = @getimagesize($file);
-            if($infosImage == false){
-                $context->buildViolation("Ce fichier n'est pas une image")
-                        ->atPath('imageFile')
-                        ->addViolation();
-            }
-        }
     }
 }
