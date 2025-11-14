@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/mesvoyages/src/Repository/VisiteRepository.php</file>
-            <file>file:/C:/wamp64/www/mesvoyages/templates/base.html.twig</file>
-            <file>file:/C:/wamp64/www/mesvoyages/templates/pages/voyage.html.twig</file>
-            <file>file:/C:/wamp64/www/mesvoyages/templates/pages/voyages.html.twig</file>
+            <file>file:/C:/wamp64/www/mesvoyages/templates/admin/admin.voyage.edit.html.twig</file>
+            <file>file:/C:/wamp64/www/mesvoyages/templates/admin/admin.environnements.html.twig</file>
+            <file>file:/C:/wamp64/www/mesvoyages/src/Entity/Environnement.php</file>
+            <file>file:/C:/wamp64/www/mesvoyages/src/Repository/EnvironnementRepository.php</file>
+            <file>file:/C:/wamp64/www/mesvoyages/src/Controller/admin/AdminEnvironnementController.php</file>
             <file>file:/C:/wamp64/www/mesvoyages/templates/admin/admin.voyages.html.twig</file>
+            <file>file:/C:/wamp64/www/mesvoyages/templates/baseadmin.html.twig</file>
             <file>file:/C:/wamp64/www/mesvoyages/src/Controller/admin/AdminVoyagesController.php</file>
-            <file>file:/C:/wamp64/www/mesvoyages/src/Controller/VoyagesController.php</file>
-            <file>file:/C:/wamp64/www/mesvoyages/src/Entity/Visite.php</file>
         </group>
     </open-files>
 </project-private>
