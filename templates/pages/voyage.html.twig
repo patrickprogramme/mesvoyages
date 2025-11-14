@@ -5,6 +5,7 @@
             <h5> {{ visite.datecreationstring }}</h5>
             <h1 class="text-primary mt-5">{{ visite.ville }}</h1>
             <h3>{{ visite.pays }}</h3>
+            <br>
             <h2 class="{{ visite.noteColor }}">{{ visite.notesurvingt }}</h2>
             <h5 class="mt-5">t° entre {{ visite.tempmin }}° et {{ visite.tempmax }}°</h5>
             <p class="mt-5"><strong>Environnements :</strong><p>
@@ -13,7 +14,12 @@
             {% endfor %}
         </div>
         <div class="col">
-            <!-- emplacement photo -->       
+            {% if visite.imageName %}
+                <img src="{{ app.request.getBasePath()~vich_uploader_asset(visite, 'imageFile') }}"
+                    class="card-img-top" style="width:100%;height:auto;">
+            {% else %}
+                <p><i>aucune image disponible</i></p>
+            {% endif %}
         </div>
     </div>
     <div class="row mt-5">
