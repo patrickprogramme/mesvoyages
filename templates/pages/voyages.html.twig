@@ -13,6 +13,7 @@
                         <a href="{{ path('voyages.sort', {champ:'ville', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
                         <form class="d-flex" method="POST" action="{{ path('voyages.findallequal', {champ:'ville'}) }}">
                             <input type="text" class="form-control form-control-sm me-2" name="recherche" placeholder="Rechercher une ville">
+                            <input type="hidden" name="_token" value="{{ csrf_token('filtre_ville') }}">
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -24,6 +25,7 @@
                         <a href="{{ path('voyages.sort', {champ:'pays', ordre: "DESC"}) }}" class="btn btn-sm btn-outline-primary" role="button">▼</a>
                         <form class="d-flex" method="POST" action="{{ path('voyages.findallequal', {champ:'pays'}) }}">
                             <input type="text" class="form-control form-control-sm me-2" name="recherche" placeholder="Rechercher un pays">
+                            <input type="hidden" name="_token" value="{{ csrf_token('filtre_pays') }}">
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
