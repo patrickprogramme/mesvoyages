@@ -28,6 +28,22 @@ class VisiteRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();
     }
+    
+    /**
+    * Retourne les $nombre derniers voyages enregistrés,
+    * triés par date de création décroissante.
+    *
+    * @param int $nombre Nombre de voyages à récupérer
+    * @return array Liste des entités Visite correspondantes
+    */
+    public function findLastByDate(int $nombre) : array
+    {
+        return $this->createQueryBuilder('v')
+                ->orderBy('v.datecreation', 'DESC')
+                ->setMaxResults($nombre)
+                ->getQuery()
+                ->getResult();
+    }
     /**
      * Enregistrements dont un champ est égal à une valeur
      * ou tous les enregistrements si la valeur est vide

@@ -1,4 +1,60 @@
 {% extends "basefront.html.twig" %}
 {% block body %}
-<h1>Page d'accueil</h1>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <p class="mb-3">
+            Voyager est ma passion depuis toujours. Chaque destination est pour moi une occasion de découvrir de nouvelles cultures, de rencontrer des personnes inspirantes et de garder une trace de ces instants uniques. J’ai créé ce site pour partager ces souvenirs avec vous.
+          </p>
+          <p class="mb-0">
+            À travers <a href="{{ path('voyages') }}">ces pages</a>, je vous emmène aux quatre coins du monde. Chaque visite raconte une ville et son pays, avec mes impressions, une note sur vingt, la date de mon passage, les températures rencontrées et l’environnement — qu’il s’agisse de montagnes, de forêts ou de villes animées. Vous trouverez aussi mes avis personnels, pour transmettre ce que j’ai ressenti sur place et, je l’espère, vous donner envie de voyager à votre tour. N'hésitez pas à <a href="{{ path('contact') }}">m'envoyer un message</a> si vous avez des questions!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <div class="row mt-3">
+        {% for visite in visites %}
+            <div class="col-md-6 mt-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <div class="image-container">
+                                {% if visite.imageName %}
+                                    <img src="{{ app.request.getBasePath() ~ vich_uploader_asset(visite, 'imageFile') }}"
+                                         class="w-100 h-100 rounded-start"
+                                         style="object-fit: cover;"
+                                         alt="{{ visite.ville }}">
+                                {% else %}
+                                    <p><i>aucune image disponible</i></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-6 p-2 d-flex flex-column justify-content-between">
+                            <div>
+                                <p><i>{{ visite.datecreationstring }}</i></p>
+                                <h5 class="text-primary">
+                                    <a href="{{ path('voyages.showone', {id: visite.id}) }}">{{ visite.ville }}</a>
+                                </h5>
+                                <p>{{ visite.pays }}</p>
+                                <div class="{{ visite.noteColor }}">{{ visite.notesurvingt }}</div>
+                                <p>t° entre {{ visite.tempmin }}° et {{ visite.tempmax }}°</p>
+                            </div>
+                            <div>
+                                <strong>Environnements :</strong><br>
+                                {% for environnement in visite.environnements %}
+                                    <span class="badge bg-primary me-2">{{ environnement.nom }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
