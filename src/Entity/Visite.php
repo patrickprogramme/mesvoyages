@@ -28,6 +28,7 @@ class Visite
     private ?string $pays = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Assert\LessThanOrEqual("today", message: "La date de création doit être antérieure ou égale à aujourd'hui.")]
     private ?\DateTime $datecreation = null;
 
     #[ORM\Column(nullable: true)]

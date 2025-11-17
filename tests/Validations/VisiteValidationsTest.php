@@ -26,19 +26,58 @@ class VisiteValidationsTest extends KernelTestCase {
     }
     
     public function testValidNoteVisite() {
-        $visite = $this->getVisite()->setNote(10);
-        $this->assertErrors($visite, 0);
+        $notes = [10, 0, 20, null];
+        foreach ($notes as $note) {
+            $visite = $this->getVisite()->setNote($note);
+            $this->assertErrors($visite, 0, "note=$note devrait réussir");
+        }
     }
     
     public function testNonValidNoteVisite() {
-        $visite = $this->getVisite()->setNote(21);
-        $this->assertErrors($visite, 1);
+        $notes = [-1, 21, -100, 100];
+        foreach ($notes as $note) {
+            $visite = $this->getVisite()->setNote($note);
+            $this->assertErrors($visite, 1, "note=$note devrait échouer");
+        }
+    }
+    
+    public function testValidTempmaxVisite() {
+        $maxtemps = [21, 50];
+        foreach ($maxtemps as $maxtemp) {
+            $visite = $this->getVisite()
+                ->setTempmin(20)
+                ->setTempmax($maxtemp);
+            $this->assertErrors($visite, 0, "min=20, max=$maxtemp devrait réussir");
+        }
     }
     
     public function testNonValidTempmaxVisite() {
-        $visite = $this->getVisite()
+        $maxtemps = [19, 20, -20];
+        foreach ($maxtemps as $maxtemp) {
+            $visite = $this->getVisite()
                 ->setTempmin(20)
-                ->setTempmax(18);
-        $this->assertErrors($visite, 1, "min=20, max=18 devrait échouer");
+                ->setTempmax($maxtemp);
+            $this->assertErrors($visite, 1, "min=20, max=$maxtemp devrait échouer");
+        }
+    }
+    
+    public function testValidDateCreationVisite() {
+        $aujourdhui = new \DateTime('today'); // objet DateTime fixé à aujourd'hui
+
+        $visite = $this->getVisite()->setDatecreation($aujourdhui);
+        $this->assertErrors($visite, 0);
+
+        $visite = $this->getVisite()->setDatecreation((clone $aujourdhui)->modify('-1 day'));
+        $this->assertErrors($visite, 0);
+    }
+
+    public function testNonValidDateCreationVisite() {
+        $aujourdhui = new \DateTime('today'); // objet DateTime fixé à aujourd'hui
+
+        $visite = $this->getVisite()->setDatecreation((clone $aujourdhui)->modify('+1 day'));
+        $this->assertErrors($visite, 1);
+
+        $visite = $this->getVisite()->setDatecreation((clone $aujourdhui)->modify('+1 year'));
+        $this->assertErrors($visite, 1);
     }
 }
