@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 
 /**
@@ -18,6 +19,13 @@ use Symfony\Component\Mime\Email;
  * @author Patrick
  */
 class ContactController extends AbstractController {
+    
+    private ParameterBagInterface $params;
+
+    public function __construct(ParameterBagInterface $params)
+    {
+        $this->params = $params;
+    }
     
     #[Route('/contact', name: 'contact')]
     public function index(Request $request, MailerInterface $mailer) : Response {
@@ -39,9 +47,11 @@ class ContactController extends AbstractController {
     
     public function sendEmail(MailerInterface $mailer, Contact $contact)
     {
+        $destination = $this->params->get('contact_email');
+        
         $email = (new Email())
             ->from($contact->getEmail())
-            ->to('contact@mesvoyages.com')
+            ->to($destination)
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
