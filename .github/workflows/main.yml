@@ -1,5 +1,8 @@
-on: push
-name: Deploy website on push
+name: Deploy website mesvoyages
+
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   web-deploy:
