@@ -127,7 +127,7 @@ class Visite
         return $this->note;
     }
     
-    public function getNoteSurVingt(): string 
+    public function getNoteSurVingt(): string
     {
         return $this->note !== null ? $this->note . "/20" : "";
     }

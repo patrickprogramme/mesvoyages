@@ -21,7 +21,7 @@ class UserFixture extends Fixture
         $user->setUsername("admin");
         $plaintextPassword = "admin";
         $hashedPassword = $this->passwordHasher->hashPassword(
-            $user, 
+            $user,
             $plaintextPassword
             );
         $user->setPassword($hashedPassword);

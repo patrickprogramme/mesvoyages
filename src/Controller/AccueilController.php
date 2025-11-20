@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @author Patrick
  */
-class AccueilController extends AbstractController {    
+class AccueilController extends AbstractController {
     /**
      *
      * @var VisiteRepository

@@ -24,6 +24,6 @@ final class LoginController extends AbstractController
     
     #[Route('/logout', name: 'logout')]
     public function logout() {
-        
+        // vide mais nécessaire
     }
 }

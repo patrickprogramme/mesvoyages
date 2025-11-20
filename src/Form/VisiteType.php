@@ -23,8 +23,8 @@ class VisiteType extends AbstractType
             ->add('pays')
             ->add('datecreation', DateType::class, [
                 'widget' => 'single_text',
-                'data' => isset($options['data']) && $options['data']->getDateCreation() != null 
-                    ? $options['data']->getDateCreation() 
+                'data' => isset($options['data']) && $options['data']->getDateCreation() != null
+                    ? $options['data']->getDateCreation()
                     : new DateTime('now'),
                 'html5' => true,
                 'label' => 'date'

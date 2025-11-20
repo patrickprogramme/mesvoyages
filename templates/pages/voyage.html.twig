@@ -16,7 +16,9 @@
         <div class="col">
             {% if visite.imageName %}
                 <img src="{{ app.request.getBasePath()~vich_uploader_asset(visite, 'imageFile') }}"
-                    class="card-img-top" style="width:100%;height:auto;">
+                    class="card-img-top"
+                    style="width:100%;height:auto;"
+                    alt="{{ visite.ville ? 'Image de ' ~ visite.ville : 'Image de la visite' }}">
             {% else %}
                 <p><i>aucune image disponible</i></p>
             {% endif %}

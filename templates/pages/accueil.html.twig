@@ -33,7 +33,7 @@
                                     <img src="{{ app.request.getBasePath() ~ vich_uploader_asset(visite, 'imageFile') }}"
                                          class="w-100 h-100 rounded-start"
                                          style="object-fit: cover;"
-                                         alt="{{ visite.ville }}">
+                                         alt="{{ visite.ville ? 'Image de ' ~ visite.ville : 'Image de la visite' }}">
                                 {% else %}
                                     <p><i>aucune image disponible</i></p>
                                 {% endif %}

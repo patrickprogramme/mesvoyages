@@ -20,6 +20,9 @@ class VoyagesController extends AbstractController {
      */
     private $repository;
     
+    public const PAGE_VOYAGES = 'pages/voyages.html.twig';
+    public const PAGE_VOYAGE = 'pages/voyage.html.twig';
+    
     /**
      * 
      * @param VisiteRepository $repository
@@ -27,11 +30,10 @@ class VoyagesController extends AbstractController {
     public function __construct(VisiteRepository $repository) {
         $this->repository = $repository;
     }
-    
     #[Route('/voyages', name: 'voyages')]
     public function index() : Response {
         $visites = $this->repository->findAllOrderBy('datecreation', 'DESC');
-        return $this->render("pages/voyages.html.twig", [
+        return $this->render(self::PAGE_VOYAGES, [
             'visites' => $visites
         ]);
     }
@@ -40,7 +42,7 @@ class VoyagesController extends AbstractController {
     public function sort($champ, $ordre) : Response
     {
         $visites = $this->repository->findAllOrderBy($champ, $ordre);
-        return $this->render("pages/voyages.html.twig", [
+        return $this->render(self::PAGE_VOYAGES, [
             'visites' => $visites
         ]);
     }
@@ -51,7 +53,7 @@ class VoyagesController extends AbstractController {
             // Request est une injection de dépendance, correspondant à la requête HTTP en cours
             $valeur = $request->get("recherche"); // récupération la valeur du champ "recherche"
             $visites = $this->repository->findByEqualValue($champ, $valeur);
-            return $this->render("pages/voyages.html.twig", [
+            return $this->render(self::PAGE_VOYAGES, [
             'visites' => $visites
             ]);
         }
@@ -61,7 +63,7 @@ class VoyagesController extends AbstractController {
     #[Route('/voyages/voyage/{id}', name: 'voyages.showone')]
     public function showOne($id) : Response {
         $visite = $this->repository->find($id);
-        return $this->render("pages/voyage.html.twig", [
+        return $this->render(self::PAGE_VOYAGE, [
             'visite' => $visite
         ]);
     }
