@@ -6,10 +6,14 @@
             <file>file:/C:/wamp64/www/mesvoyages/tests/VisiteTest.php</file>
             <file>file:/C:/wamp64/www/mesvoyages/tests/Validations/VisiteValidationsTest.php</file>
             <file>file:/C:/wamp64/www/mesvoyages/src/Repository/VisiteRepository.php</file>
+            <file>file:/C:/wamp64/www/mesvoyages/.env</file>
+            <file>file:/C:/wamp64/www/mesvoyages/templates/pages/accueil.html.twig</file>
             <file>file:/C:/wamp64/www/mesvoyages/tests/Repository/VisiteRepositoryTest.php</file>
             <file>file:/C:/wamp64/www/mesvoyages/src/Controller/VoyagesController.php</file>
+            <file>file:/C:/wamp64/www/mesvoyages/src/Controller/ContactController.php</file>
             <file>file:/C:/wamp64/www/mesvoyages/src/Entity/Visite.php</file>
             <file>file:/C:/wamp64/www/mesvoyages/src/Form/VisiteType.php</file>
+            <file>file:/C:/wamp64/www/mesvoyages/.github/workflows/main.yml</file>
         </group>
     </open-files>
 </project-private>
